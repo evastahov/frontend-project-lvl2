@@ -1,5 +1,7 @@
+plugins:
+  - jest
 env:
-  browser: true
+  node: true
   es6: true
 extends:
   - airbnb-base
@@ -7,7 +9,12 @@ globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
 parserOptions:
-  ecmaVersion: 2018
+  ecmaVersion: latest
   sourceType: module
 rules:
   no-console: 0
+  import/extensions:
+    - error
+    - ignorePackages
+    - js: always
+  no-underscore-dangle: [2, { "allow": ["__filename", "__dirname"] }]

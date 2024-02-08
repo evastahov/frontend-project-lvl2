@@ -9,10 +9,6 @@ program
   .option('-f, --format <type>', 'output format')
   .helpOption('-h, --help', 'output usage information')
   .arguments('<filepath1> <filepath2>')
-  .action((filePath1, filePath2) =>
-    console.log(genDiff(filePath1, filePath2))
-  );
+  .action((filePath1, filePath2) => console.log(genDiff(filePath1, filePath2)));
 
 program.parse();
-
-

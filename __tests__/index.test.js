@@ -1,7 +1,6 @@
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import path from 'path';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { test, expect } from '@jest/globals';
 import genDiff from '../src/index.js';
 

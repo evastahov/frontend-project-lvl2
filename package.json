@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Вычислитель отличий – программа, определяющая разницу между двумя структурами данных.",
   "main": "src/index.js",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
   },

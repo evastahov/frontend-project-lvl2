@@ -7,7 +7,7 @@ const createObjLine = (node, depth = 1) => {
     return node;
   }
   const result = Object.entries(node).map(([key, value]) => `${createIndent(depth + 1)}  ${key}: ${createObjLine(value, depth + 1)}`);
-  return `{\n${result.join('\n')}\n  ${createIndent(depth)}}`;
+  return `{\n${result.join('\n')}\n${createIndent(depth)}  }`;
 };
 
 const createLine = (data, depth = 1) => {
@@ -16,13 +16,13 @@ const createLine = (data, depth = 1) => {
       case 'nested':
         return `${createIndent(depth)}  ${node.key}: {\n${createLine(node.children, depth + 1)}\n${createIndent(depth)}  }`;
       case 'added':
-        return `${createIndent(depth)}+ ${node.key}: ${createObjLine(node.value)}`;
+        return `${createIndent(depth)}+ ${node.key}: ${createObjLine(node.value, depth)}`;
       case 'deleted':
-        return `${createIndent(depth)}- ${node.key}: ${createObjLine(node.value)}`;
+        return `${createIndent(depth)}- ${node.key}: ${createObjLine(node.value, depth)}`;
       case 'changed':
-        return `${createIndent(depth)}- ${node.key}: ${createObjLine(node.value)}\n${createIndent(depth)}+ ${node.key}: ${createObjLine(node.value2)}`;
+        return `${createIndent(depth)}- ${node.key}: ${createObjLine(node.value, depth)}\n${createIndent(depth)}+ ${node.key}: ${createObjLine(node.value2, depth)}`;
       default:
-        return `${createIndent(depth)}  ${node.key}: ${createObjLine(node.value)}`;
+        return `${createIndent(depth)}  ${node.key}: ${createObjLine(node.value, depth)}`;
     }
   });
   return result.join('\n');

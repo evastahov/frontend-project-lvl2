@@ -10,7 +10,7 @@ const getFormatValue = (value) => {
   return value;
 };
 
-const createPlain = (data, path) => {
+const createPlain = (data, path = '') => {
   const result = data.map((node) => {
     const pathName = (path === '' ? `${node.key}` : `${path}.${node.key}`);
     switch (node.type) {

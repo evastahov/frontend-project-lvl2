@@ -4,7 +4,7 @@ const createIndent = (acc) => ' '.repeat(acc * 4 - 2);
 
 const createObjLine = (node, depth = 1) => {
   if (!_.isObject(node)) {
-    return node;
+    return `${node}`;
   }
   const result = Object.entries(node).map(([key, value]) => `${createIndent(depth + 1)}  ${key}: ${createObjLine(value, depth + 1)}`);
   return `{\n${result.join('\n')}\n${createIndent(depth)}  }`;

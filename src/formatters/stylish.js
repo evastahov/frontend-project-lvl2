@@ -21,8 +21,10 @@ const createLine = (data, depth = 1) => {
         return `${createIndent(depth)}- ${node.key}: ${createObjLine(node.value, depth)}`;
       case 'changed':
         return `${createIndent(depth)}- ${node.key}: ${createObjLine(node.value, depth)}\n${createIndent(depth)}+ ${node.key}: ${createObjLine(node.value2, depth)}`;
-      default:
+      case 'unchanged':
         return `${createIndent(depth)}  ${node.key}: ${createObjLine(node.value, depth)}`;
+      default:
+        throw new Error(`Unsupported type ${node.type}`);
     }
   });
   return result.join('\n');

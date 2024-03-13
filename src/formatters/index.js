@@ -10,7 +10,7 @@ const switchFormat = (data, format) => {
     case 'json':
       return JSON.stringify(data);
     default:
-      throw new Error(`Unsupported format${format}`);
+      throw new Error(`Unsupported format ${format}`);
   }
 };
 

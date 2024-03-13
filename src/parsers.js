@@ -8,7 +8,7 @@ const switchParser = (data, format) => {
     case '.yaml':
       return yaml.load(data, 'utf-8');
     default:
-      throw new Error(`Unsupported format${format}`);
+      throw new Error(`Unsupported format ${format}`);
   }
 };
 

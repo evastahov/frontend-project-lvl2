@@ -22,8 +22,10 @@ const createPlain = (data, path = '') => {
         return `Property '${pathName}' was removed`;
       case 'changed':
         return `Property '${pathName}' was updated. From ${getFormatValue(node.value)} to ${getFormatValue(node.value2)}`;
-      default:
+      case 'unchanged':
         return null;
+      default:
+        throw new Error(`Unsupported type ${node.type}`);
     }
   });
   return result.filter(Boolean).join('\n');
